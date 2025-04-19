@@ -1,0 +1,61 @@
+% diagnosis.pl
+
+:- dynamic(disease/1).
+:- dynamic(symptom_present/1).
+
+% Ask the user for symptoms interactively
+get_symptoms :-
+    write('Enter a symptom (e.g., fever, cough, sneezing). Type "done." to finish:'), nl,
+    read(Symptom),
+    ( Symptom == done ->
+        true
+    ; 
+        assert(symptom_present(Symptom)),
+        get_symptoms
+    ).
+
+% Diagnosis rules
+diagnose :-
+    symptom_present(fever),
+    symptom_present(cough),
+    \+ disease(flu),
+    assert(disease(flu)),
+    write('The patient may have flu.'), nl,
+    fail.
+
+diagnose :-
+    symptom_present(sneezing),
+    symptom_present(runny_nose),
+    \+ disease(common_cold),
+    assert(disease(common_cold)),
+    write('The patient may have common cold.'), nl,
+    fail.
+
+diagnose :-
+    symptom_present(fever),
+    symptom_present(cough),
+    symptom_present(loss_of_taste),
+    \+ disease(covid_19),
+    assert(disease(covid_19)),
+    write('The patient may have COVID-19.'), nl,
+    fail.
+
+% Fallback when no matching disease is found
+diagnose :-
+    \+ disease(_),
+    write('No disease could be diagnosed based on the entered symptoms.'), nl.
+
+diagnose.  % End of rule chain
+
+% Entry point to clear previous data and run the system
+start :-
+    retractall(symptom_present(_)),
+    retractall(disease(_)),
+    get_symptoms,
+    diagnose.
+
+
+steps to run 
+step 1 :save the file with name diagnosis.pl
+step 2 :press f9
+step 3 :press start.

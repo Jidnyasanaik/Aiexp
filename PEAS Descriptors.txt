@@ -1,0 +1,58 @@
+PEAS Descriptors Examples/Problems
+
+1.	PEAS descriptor for Automated Car Driver: Performance Measure
+●	Safety: Automated system should be able to drive the car safely without dashing anywhere.
+●	Optimum speed: Automated system should be able to maintain the optimal speed depending upon the surroundings.
+●	Comfortable journey: Automated system should be able to give a comfortable journey to the end user.
+
+Environment:
+
+●	Roads: Automated car driver should be able to drive on any kind of a road ranging from city roads to highway.
+●	Traffic conditions: You will find different sort of traffic conditions for different type of roads.
+
+Actuators:
+
+●	Steering wheel: used to direct car in desired directions.
+●	Accelerator, gear: To increase or decrease speed of the car.
+
+Sensors:
+
+●	To take input from environment in car driving example cameras, sonar system etc.
+
+
+2.	PEAS descriptor for playing soccer.
+
+Performance Measure: scoring goals, defending, speed Environment: playground, teammates, opponents, ball Actuators: body, dribbling, tackling, passing ball, shooting Sensors: camera, ball sensor, location sensor, other players locator
+3.	PEAS descriptor for Exploring the subsurface oceans of Titan.
+
+Performance Measure: safety, images quality, video quality
+
+Environment: ocean, water
+
+Actuators: mobile diver, steering, break, accelerator 
+Sensors: video, accelerometers, depth sensor, GPS
+
+4.	PEAS descriptor for Shopping for used AI books on the Internet.
+
+Performance Measure: price, quality, authors, book review
+
+Environment: web, vendors, shippers
+
+Actuators: fill in form, follow URL, display to user
+
+Sensors: HTML
+
+5.	PEAS descriptor for playing a tennis match.
+
+Performance Measure: winning
+
+Environment: playground, acquet, ball, opponent
+
+Actuators: ball, raquet, joint arm
+
+Sensors: ball locator, camera, racquet sensor, opponent locator
+
+6.	PEAS descriptor for practicing tennis against a wall.
+
+Performance Measure: hit speed, hit accuracy Environment: playground, racquet, ball, wall Actuators: ball, racquet, joint arm
+Sensors: ball locator, camera, racquet sensor

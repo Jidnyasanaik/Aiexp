@@ -1,0 +1,49 @@
+% Define winning conditions
+win(Player, Board) :-
+    (Board = [Player, Player, Player, _, _, _, _, _, _];
+     Board = [_, _, _, Player, Player, Player, _, _, _];
+     Board = [_, _, _, _, _, _, Player, Player, Player];
+     Board = [Player, _, _, Player, _, _, Player, _, _];
+     Board = [_, Player, _, _, Player, _, _, Player, _];
+     Board = [_, _, Player, _, _, Player, _, _, Player];
+     Board = [Player, _, _, _, Player, _, _, _, Player];
+     Board = [_, _, Player, _, Player, _, Player, _, _]).
+
+% Rule to check if a position is free
+free(Position, Board) :-
+    nth0(Position, Board, empty).
+
+% Simulate a move
+make_move(Board, Position, Player, NewBoard) :-
+    nth0(Position, Board, empty),
+    replace(Board, Position, Player, NewBoard).
+
+% Helper to replace an element at an index in a list
+replace([_|T], 0, X, [X|T]).
+replace([H|T], I, X, [H|R]) :-
+    I > 0,
+    I1 is I - 1,
+    replace(T, I1, X, R).
+
+% AI move: take a winning move if possible
+best_move(Board, Move) :-
+    free(Move, Board),
+    make_move(Board, Move, x, NewBoard),
+    win(x, NewBoard), !.
+
+% AI move: block opponent if they are about to win
+best_move(Board, Move) :-
+    free(Move, Board),
+    make_move(Board, Move, o, NewBoard),
+    win(o, NewBoard), !.
+
+% AI move: choose the first available move
+best_move(Board, Move) :-
+    free(Move, Board), !.
+
+
+steps to run the code 
+ copy the code in prolog editor and save the file with name tictactoe.pl
+step 2:press F9
+step 3 : write the query in the terminal
+?- Board = [x, o, empty, empty, x, o, empty, empty, empty], best_move(Board, Move).
