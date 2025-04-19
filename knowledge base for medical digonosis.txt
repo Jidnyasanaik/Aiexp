@@ -1,0 +1,30 @@
+% Facts defining diseases and their symptoms
+symptom(flu, fever).
+symptom(flu, cough).
+symptom(flu, headache).
+symptom(common_cold, sneezing).
+symptom(common_cold, runny_nose).
+symptom(common_cold, sore_throat).
+symptom(covid_19, fever).
+symptom(covid_19, cough).
+symptom(covid_19, loss_of_taste).
+
+% Rule to diagnose disease based on two distinct symptoms
+diagnose(Disease) :-
+    symptom(Disease, Symptom1),
+    symptom(Disease, Symptom2),
+    Symptom1 \= Symptom2,  % Ensure the two symptoms are different
+    write('The patient may have '), write(Disease), nl.
+
+
+
+
+
+
+steps to run the code
+open prolog editor 
+
+step1 :save this file as digonosis.pl
+step2 :press f9
+or in the upper left corner press the button start and press consult the code will run 
+step 3:run the query :-    ?- diagnose(D).

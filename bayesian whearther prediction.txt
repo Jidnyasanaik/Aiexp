@@ -1,0 +1,35 @@
+% Prior probabilities for weather conditions
+prior(sunny, 0.5).
+prior(rainy, 0.3).
+prior(cloudy, 0.2).
+
+% Conditional probabilities of evidence given weather condition
+probability(cloudy_given_sunny, 0.2).
+probability(cloudy_given_rainy, 0.7).
+probability(cloudy_given_cloudy, 0.9).
+probability(humidity_given_sunny, 0.3).
+probability(humidity_given_rainy, 0.8).
+probability(humidity_given_cloudy, 0.6).
+
+% Bayesian inference for weather prediction
+bayes(Weather, EvidenceKey, Posterior) :-
+    prior(Weather, Prior),
+    atomic_list_concat([EvidenceKey, given, Weather], '_', EvidenceAtom),
+    probability(EvidenceAtom, GivenProb),
+    Posterior is Prior * GivenProb.
+
+
+steps to run the code 
+ open prolog editor 
+step1:paste the code  in the knowledge base and save the file with name bayesian_weather.pl
+
+step2 : press F9
+step 3 :type the query
+
+?- bayes(sunny, cloudy, Posterior).
+output for the query
+Posterior = 0.1.
+
+?- bayes(rainy, humidity, Posterior).
+output for the query
+Posterior = 0.24.
